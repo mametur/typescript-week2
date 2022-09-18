@@ -1,17 +1,21 @@
 // Use type and mentioned in the name of the variable
 // Assign an appropriate value
-const aNumber: any = null;
-const aString: any = null;
-const aBigInt: any = null;
-const anArray: any = null
-const anUnknown: any = null;
-const anObject: any = null;
-const aTuple: any = null;
-const anEnum: any = null;
+const aNumber: number = 5;
+const aString: string = 'string';
+const aBigInt: BigInt = 13333333n;
+const anArray: Array<number> = [1]
+const anUnknown: unknown = null;
+const anObject: object = {};
+const aTuple: [number,string] = [10, 'Mamé'];
+enum Size 
+{ Small=1 ,
+  Medium,
+  Large 
+};
 
 // Implement this function any type accordingly
-function isEven(number): any {
-
+function isEven(number: number): boolean {
+    return number % 2 === 0;
 }
 
 // Type the following following function and variable
@@ -23,29 +27,32 @@ type Developer = {
     role: string
 }
 
-const jane: any = {
+const jane: Person = {
     name: 'Jane'
 }
 
-const joe: any = {
+const joe: Developer = {
     role: 'Devops'
 }
 
-const people: any[] =  [
-    jane, joe
-]
+type People = (Person | Developer)[];
+   
 
-function printPeople(people: any[]): any {
+function printPeople(people: People): void {
     // Print the name of person or the role in this function
+    // const printResult = people.name | people.role
+    people.forEach(element => {
+        console.log('first', element)
+    });
+    
 }
-
 // Type the encrpyt function correctly
-const encryptText = (plainText: any, shift: any) => {
-    let cipherArr: any[] = []
+const encryptText = (plainText: string, shift: number) => {
+    let cipherArr: string[] = []
     let cipherLetter
 
     plainText.split("").map(letter => {
-      let code = letter.charCodeAt(letter)
+      let code = letter.charCodeAt(0)
       if(letter === " ") {
         return cipherArr.push(letter)
       }
@@ -62,9 +69,9 @@ const encryptText = (plainText: any, shift: any) => {
     return cipherArr.join("")
 }
 
-
+type Vegetable = 'Cucumber' | 'Eggplant' | 'Cabbage';
 // Solve using a literal union type
-let vegetable: any; // :Vegetable:
+let vegetable: Vegetable;
 vegetable = "Cucumber";
 vegetable = "Eggplant";
 vegetable = "Cabbage";
